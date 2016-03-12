@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int Size,i,j,k=0,flag;
+	char InStr[100],OutStr[50][50];
+	scanf("%s",InStr);
+	Size=strlen(InStr);
+	for(i=0;i<Size;i++){
+		if(InStr[i]=='*'||InStr[i]=='+'||InStr[i]=='-'||InStr[i]=='/'||InStr[i]=='('||InStr[i]==')'){
+			InStr[i]='_';
+		}
+	}
+	for(i=0;i<Size;i++){
+		if(InStr[i]!='_'){
+			if(InStr[i]>='0'&&InStr[i]<='9'){
+				while(InStr[i]!='_'){
+					InStr[i]='_';
+					i++;
+				}
+			}
+			else{
+				while(InStr[i]!='_')
+					i++;
+			}
+		}
+	}
+	for(i=0;i<Size;i++){
+		if(InStr[i]!='_'){
+			j=0;
+			flag=0;
+			while(InStr[i]!='_'){
+				OutStr[k][j++]=InStr[i];
+				i++;
+			}
+			OutStr[k][j]='\0';
+			for(j=0;j<k;j++){
+				if(strcmp(OutStr[k],OutStr[j])==0){
+					flag=1;
+				}
+			}
+			if(flag==0){
+				k++;
+			}
+		}
+	}
+	printf("%s",InStr);
+	for(i=0;i<k;i++){
+		printf("\n%s",OutStr[i]);
+	}
+	printf("\n");
+	printf("%d\n",k);
+	return 0;
+}
