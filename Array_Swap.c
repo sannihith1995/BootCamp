@@ -1,4 +1,5 @@
-nt main()
+#include<stdio.h>
+int main()
 {
 	int n,i=0,j,k,temp,d=0,a,arr[10];
 	scanf("%d",&n);
